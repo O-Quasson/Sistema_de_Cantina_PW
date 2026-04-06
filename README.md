@@ -1,2 +1,6 @@
 # Sistema_de_Cantina_PW
-https://prod.liveshare.vsengsaas.visualstudio.com/join?FCF3FD5F4D5970304E0BDC51E1FAB0EFC23D
+figma pra exemplo: https://www.figma.com/design/KoujM31ivGgsvWcFyiFt1C/Sistema-da-Cantina?node-id=0-1&t=QsBw95pY7ybvrVsQ-1
+
+Design de tela: Luís
+Programação frontend: Gabriel Kendy
+Programação backend: Gabriel Kendy/Luís
