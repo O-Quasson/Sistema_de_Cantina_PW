@@ -53,9 +53,9 @@ function Homescreen() {
         <header style={{backgroundColor: '#110E41', height: '4rem', justifyContent: 'space-between', alignItems: 'center', display: 'flex', width: window.innerWidth, padding: '2%', boxSizing: 'border-box', margin: 0, marginBottom: '15%', objectFit: 'contain'}}>
           <img src={logo} style={{width: '20%', flexShrink: 0}}/>
           <div style={{gap: '1rem', display: 'flex', alignItems: 'center'}}>
-            <a href='https://www.youtube.com/watch?v=dQw4w9WgXcQ'>
+            <Link to="/login">
               <button style={{backgroundColor: "#6B0707", color: 'white', boxShadow: 'none', outline: 'none', border: 'none', fontSize: '100%', borderRadius: 7, padding: '0.5rem' }}>Entrar</button>
-            </a>
+            </Link>
             
             <a href='https://www.youtube.com/watch?v=dQw4w9WgXcQ'>
               <button style={{backgroundColor: "#6B0707", color: 'white', boxShadow: 'none', outline: 'none', border: 'none', fontSize: '100%', borderRadius: 7, padding: '0.5rem'}}>Cadastrar</button>
