@@ -21,17 +21,19 @@ function Homescreen() {
   if(isDesktop==true){
     return(
       <>
-        <header style={{backgroundColor: '#110E41', height: '5.5rem', justifyContent: 'space-between', alignItems: 'center', display: 'flex', width: "100%", padding: '3% 5% 3% 5%', boxSizing: 'border-box'}}>
-          <img src={logo} style={{width: '10%'}}/>
+        <header style={{backgroundColor: '#110E41', height: '4.5rem', justifyContent: 'space-between', alignItems: 'center', display: 'flex', width: "100%", padding: '3% 5% 3% 5%', boxSizing: 'border-box'}}>
+          <Link to='/'>
+              <img src={logo} style={{width: '11%'}}/>
+          </Link>
           
           <div style={{gap: '50%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
             <Link to='/login'>
               <button style={{backgroundColor: "#6B0707", width: '175%',  height: '3rem', color: 'white', fontSize: "120%", borderRadius: 7, boxShadow: 'none', outline: 'none', border: 'none', cursor: 'pointer'}}>Entrar</button>
             </Link>
             
-            <a href='https://www.youtube.com/watch?v=dQw4w9WgXcQ'>
+            <Link to='/cadastro'>
               <button style={{backgroundColor: "#6B0707", width: '120%', height: "3rem",  color: 'white', fontSize: '120%', borderRadius: 7, boxShadow: 'none', outline: 'none', border: 'none', cursor: 'pointer'}}>Cadastrar</button>
-            </a> 
+            </Link>
           </div>
 
         </header>
@@ -51,15 +53,18 @@ function Homescreen() {
     return(
       <>
         <header style={{backgroundColor: '#110E41', height: '4rem', justifyContent: 'space-between', alignItems: 'center', display: 'flex', width: window.innerWidth, padding: '2%', boxSizing: 'border-box', margin: 0, marginBottom: '15%', objectFit: 'contain'}}>
-          <img src={logo} style={{width: '20%', flexShrink: 0}}/>
+          <Link to='/' style={{width: '20%'}}>
+            <img src={logo} style={{width: '100%', flexShrink: 0}}/>
+          </Link>
+
           <div style={{gap: '1rem', display: 'flex', alignItems: 'center'}}>
             <Link to="/login">
               <button style={{backgroundColor: "#6B0707", color: 'white', boxShadow: 'none', outline: 'none', border: 'none', fontSize: '100%', borderRadius: 7, padding: '0.5rem' }}>Entrar</button>
             </Link>
             
-            <a href='https://www.youtube.com/watch?v=dQw4w9WgXcQ'>
+            <Link to='/cadastro'>
               <button style={{backgroundColor: "#6B0707", color: 'white', boxShadow: 'none', outline: 'none', border: 'none', fontSize: '100%', borderRadius: 7, padding: '0.5rem'}}>Cadastrar</button>
-            </a> 
+            </Link> 
           </div>
         </header>
         <div style={{justifyContent: 'center', alignItems: 'center', padding: '10%', boxSizing: 'border-box', display: 'flex', flexDirection: 'column'}}>
