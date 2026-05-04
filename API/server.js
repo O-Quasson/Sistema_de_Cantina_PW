@@ -48,6 +48,29 @@ app.post('/cadastro', async (req, res) => {
     }
 })
 
+app.post('/login', async (req, res) => {
+    try{
+
+        const dados = {
+            RM: req.body.RM,
+            senha: req.body.senha
+        }
+
+        const procuraUser = await User.findByPk(dados.RM);
+
+        if(!procuraUser){
+            res.send('Usuário n existe, otário')
+        }else{
+            if(procuraUser.senha===dados.senha){
+                res.send('tudo certo, pode entrar chefia');
+            }
+        }
+
+    }catch(error){
+        res.send('i guess bruh' + error)
+    }
+})
+
 app.get('/duh', (req, res) => {
     res.send('duh uh');
 })
