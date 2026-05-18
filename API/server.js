@@ -31,7 +31,8 @@ app.post('/cadastro', async (req, res) => {
         const dados = {
             RM: req.body.RM,
             email: req.body.email,
-            senha: req.body.senha
+            senha: req.body.senha,
+            isCooking: false
         }
 
         const userExiste = await User.findByPk(dados.RM);
@@ -48,7 +49,7 @@ app.post('/cadastro', async (req, res) => {
     }
 })
 
-app.post('/login', async (req, res) => {
+app.post('/loginA', async (req, res) => {
     try{
 
         const dados = {
@@ -61,8 +62,35 @@ app.post('/login', async (req, res) => {
         if(!procuraUser){
             res.send('Usuário n existe, otário')
         }else{
-            if(procuraUser.senha===dados.senha){
+            if(procuraUser.senha==dados.senha){
                 res.send('tudo certo, pode entrar chefia');
+            }else{
+                res.send("OMAE WA... TOJI-KUN WANAI!")
+            }
+        }
+
+    }catch(error){
+        res.send('i guess bruh' + error)
+    }
+})
+
+app.post('/loginF', async (req, res) => {
+    try{
+
+        const dados = {
+            email: req.body.email,
+            senha: req.body.senha
+        }
+
+        const procuraUser = await User.findByPk(dados.RM);
+
+        if(!procuraUser){
+            res.send("You don't think")
+        }else{
+            if((procuraUser.senha==dados.senha)&&(procuraUser.isCooking==true)){
+                res.send('bem vinda e obrigado por seus serviços');
+            }else{
+                res.send("Tu não é tia da cantina. Estarei mandando um esquadrão de bombardeio para sua localização nesse exato momento")
             }
         }
 

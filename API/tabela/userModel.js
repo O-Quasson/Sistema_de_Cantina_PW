@@ -15,6 +15,10 @@ export default (sequelize) => {
         senha: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        isCooking: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false
         }
     }, {
         tableName: 'Usuario',

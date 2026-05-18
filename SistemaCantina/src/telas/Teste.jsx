@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import api from '../axios/api.js'
 
 function TesteAPI() {
-    let [dumb, setass] = useState('cum')
+    let [dumb, setass] = useState('cum');
+    let [escolha, setescolha] = useState('aluno');
 
     const pega = async() => {
         api.get('/duh')
@@ -36,7 +37,7 @@ function TesteAPI() {
         }
     }
 
-    const login = async(e) => {
+    const loginA = async(e) => {
         e.preventDefault();
 
         let form = new FormData(e.target);
@@ -46,12 +47,58 @@ function TesteAPI() {
             senha: Object.fromEntries(form.entries()).senha
         }
 
-        api.post('/login', dados)
+        api.post('/loginA', dados)
             .then((data) => {
                 console.log(data.data);
                 alert(data.data);
             })
 
+    }
+
+    const loginF = async(e) => {
+        e.preventDefault();
+
+        let form = new FormData(e.target);
+
+        const dados = {
+            email: Object.fromEntries(form.entries()).email,
+            senha: Object.fromEntries(form.entries()).senha
+        }
+
+        api.post('/loginF', dados)
+            .then((data) => {
+                console.log(data.data);
+                alert(data.data);
+            })
+
+    }
+
+    function Larp(){
+        if(escolha=="aluno"){
+            return(
+                <form onSubmit={loginA}>
+                    <label for="RM">RM</label>
+                    <input id="RM" name="RM"></input>
+
+                    <label for="senha">senha</label>
+                    <input id="senha" name="senha"></input>
+
+                    <input type="submit"></input>
+                </form>
+            )
+        }else if(escolha=="func"){
+            return(
+                <form onSubmit={loginF}>
+                    <label for="email">Email</label>
+                    <input id="email" name="email"></input>
+
+                    <label for="senha">senha</label>
+                    <input id="senha" name="senha"></input>
+
+                    <input type="submit"></input>
+                </form>
+            )
+        }
     }
 
     return(
@@ -74,6 +121,15 @@ function TesteAPI() {
 
                 <input type="submit"></input>
             </form>
+            <br />
+
+            <label for='escolha' />
+            <select name='escolha' id='escolha' defaultValue={'aluno'} onChange={setescolha}>
+                <option value="aluno">Betinha</option>x
+                <option value="func">Cozinheiro Sigma e Chad</option>
+            </select>
+
+            {Larp()}
         </>
     )
 }
