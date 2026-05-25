@@ -6,7 +6,7 @@ import Loginscreen from './telas/Login.jsx';
 import Homescreen from './telas/Home.jsx';
 import Cadastroscreen from './telas/Cadastro.jsx';
 import TesteAPI from './telas/teste.jsx';
-
+import MenuScreen from './telas/MenuScreen.jsx';
 import { isDesktop } from 'react-device-detect';
 import logo from './assets/logo.png'
 import imagens from './assets/imagens.png'
@@ -19,7 +19,7 @@ function Heder() {
   if(isDesktop==true){
     return(
       <>
-        <header style={{backgroundColor: '#110E41', height: '4.5rem', justifyContent: 'space-between', alignItems: 'center', display: 'flex', width: "100%", padding: '3% 5% 3% 5%', boxSizing: 'border-box'}}>
+        <header style={{backgroundColor: '#1a1a2e', height: '4.5rem', justifyContent: 'space-between', alignItems: 'center', display: 'flex', width: "100%", padding: '3% 5% 3% 5%', boxSizing: 'border-box'}}>
           <Link to='/'>
               <img src={logo} style={{width: '11%'}}/>
           </Link>
@@ -69,6 +69,8 @@ function App() {
       <Route path='/login' element={<Loginscreen />}/>
       <Route path='/cadastro' element={<Cadastroscreen />}/>
       <Route path='/teste' element={<TesteAPI />} />
+      <Route path='/menuscreen' element={<MenuScreen/>} />
+
       </Routes>
     </BrowserRouter>
     </>
