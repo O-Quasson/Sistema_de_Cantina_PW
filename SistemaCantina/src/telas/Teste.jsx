@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import api from '../axios/api.js'
+import Cookies from 'js-cookie'
 
 function TesteAPI() {
     let [dumb, setass] = useState('cum');
@@ -51,6 +52,10 @@ function TesteAPI() {
             .then((data) => {
                 console.log(data.data);
                 alert(data.data);
+
+                if(data.status==200){
+                    Cookies.set('logado', {logado: true, admin: 'twin'}, {expires: 1/720});
+                }
             })
 
     }
@@ -69,6 +74,10 @@ function TesteAPI() {
             .then((data) => {
                 console.log(data.data);
                 alert(data.data);
+
+                if(data.status==200){
+                    Cookies.set('logado', {logado: true, admin: 'twin'}, {expires: 1/720});
+                }
             })
 
     }
@@ -97,6 +106,20 @@ function TesteAPI() {
 
                     <input type="submit"></input>
                 </form>
+            )
+        }
+    }
+
+    function bahh(){
+
+        let turu = Cookies.get('logado');
+        if(turu.logado==true){
+            return(
+                <img src="https://media.tenor.com/wuvUII8rKY0AAAAM/to-online-to.gif"></img>
+            )
+        }else{
+            return(
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ4VIE2iyw4NMpr0jKXYfZXBJCP5rk7xO02Etus-sOvw&s"></img>
             )
         }
     }
@@ -130,6 +153,8 @@ function TesteAPI() {
             </select>
 
             {Larp()}
+
+            {bahh()}
         </>
     )
 }

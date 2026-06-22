@@ -7,10 +7,7 @@ import livroslogo from '../assets/livroslogo.png'
 function MenuScreen() {
   const [cardapioOpen, setCardapioOpen] = useState(false)
   const [graficoOpen, setGraficoOpen] = useState(false)
-  const [selectedDate, setSelectedDate] = useState('25/05')
   const navigate = useNavigate()
-
-  const dates = ['25/05', '26/05', '27/05', '28/05', '29/05', '30/05']
 
   return (
     <>
@@ -26,40 +23,12 @@ function MenuScreen() {
               <h2 className="menu-title">Cardápios</h2>
             </div>
 
-            <div 
-              className={`expand-content ${cardapioOpen ? 'open' : ''}`}
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Seletor de Datas da Semana */}
-              <div className="calendar-selector">
-                {dates.map((date, index) => (
-                  <div key={date} className="date-item-wrapper">
-                    <span
-                      className={`date-item ${selectedDate === date ? 'active' : ''}`}
-                      onClick={() => setSelectedDate(date)}
-                    >
-                      {date}
-                    </span>
-                    {index < dates.length - 1 && <span className="divider">|</span>}
-                  </div>
-                ))}
-                <span className="calendar-icon">📅</span>
-              </div>
-
-              {/* Detalhes do Dia Selecionado */}
-              <div className="day-details">
-                <h3 className="day-title">Segunda-feira <br /> {selectedDate}</h3>
-                
-                {/* Área de Adicionar Imagem */}
-                <div className="image-placeholder">
-                  <span className="plus-icon">+</span>
-                  <span className="placeholder-text">Adicionar Imagem</span>
-                </div>
-
-                <p className="ingredients-text">Lista de ingredientes</p>
-
-                <button className="btn-editar-interno">Editar</button>
-              </div>
+            <div className={`expand-content ${cardapioOpen ? 'open' : ''}`}>
+              <p className="expand-text">
+                Aqui você pode consultar os cardápios semanais do restaurante da
+                Etec Bento Quirino, com todas as refeições preparadas pelos alunos
+                do curso técnico de gastronomia.
+              </p>
             </div>
           </div>
 
@@ -134,13 +103,13 @@ function MenuScreen() {
 
         /* Cardápios */
         .cardapio-card {
-          background: #e6e6e6;          
+          background: linear-gradient(180deg, #6d1f1f, #3b0d0d);          
           border: 1px solid #c1c1c1;
         }
 
         /* Gráfico */
         .grafico-card {
-          background: #e6e6e6;
+          background: linear-gradient(180deg, #6d1f1f, #3b0d0d);
           border: 1px solid #c1c1c1;
         }
 
@@ -151,7 +120,7 @@ function MenuScreen() {
         .menu-title {
           font-family: 'Dancing Script', cursive;
           font-size: 32px;
-          color: #7f0b0b;
+          color: white;
           margin: 0;
           text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
         }
@@ -169,7 +138,7 @@ function MenuScreen() {
 
         .expand-content.open {
           padding: 10px 20px 14px;
-          max-height: 600px; /* Aumentado para comportar os novos elementos sem cortar */
+          max-height: 150px;
           opacity: 1;
         }
 
@@ -178,104 +147,6 @@ function MenuScreen() {
           color: #f5f5f5;
           line-height: 1.6;
           margin: 0;
-        }
-
-        /* Elementos internos do menu expandido (usando suas cores base) */
-        .calendar-selector {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          background-color: #ffffff;
-          padding: 8px 12px;
-          border-radius: 8px;
-          margin-bottom: 16px;
-        }
-
-        .date-item-wrapper {
-          display: flex;
-          align-items: center;
-        }
-
-        .date-item {
-          font-size: 13px;
-          font-weight: bold;
-          color: #3b0d0d;
-          cursor: pointer;
-        }
-
-        .date-item.active {
-          color: #6d1f1f;
-          text-decoration: underline;
-        }
-
-        .divider {
-          color: #6d1f1f;
-          margin-left: 6px;
-          font-size: 12px;
-        }
-
-        .calendar-icon {
-          font-size: 16px;
-        }
-
-        .day-details {
-          display: flex;
-          flex-direction: column;
-          color: #000000;
-        }
-
-        .day-title {
-          font-size: 18px;
-          margin-bottom: 12px;
-          font-weight: bold;
-        }
-
-        .image-placeholder {
-          width: 100%;
-          height: 160px;
-          background-color: #6e6e6e;
-          border-radius: 12px;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          gap: 4px;
-          cursor: pointer;
-          margin-bottom: 12px;
-        }
-
-        .plus-icon {
-          color: #ffffff;
-          font-size: 32px;
-          font-weight: 300;
-        }
-
-        .placeholder-text {
-          color: #ffffff;
-          font-size: 12px;
-        }
-
-        .ingredients-text {
-          font-size: 14px;
-          font-weight: bold;
-          margin-bottom: 16px;
-        }
-
-        .btn-editar-interno {
-          background-color: #1a1a2e;
-          color: #ffffff;
-          border: none;
-          padding: 8px 24px;
-          border-radius: 8px;
-          font-size: 14px;
-          font-weight: bold;
-          align-self: center;
-          cursor: pointer;
-          transition: background-color 0.2s;
-        }
-
-        .btn-editar-interno:hover {
-          background-color: #f5f5f5;
         }
 
         .kitchen-img {
