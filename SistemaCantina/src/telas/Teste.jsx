@@ -90,7 +90,7 @@ function TesteAPI() {
             return(
                 <form onSubmit={loginF}>
                     <label for="email">Email</label>
-                    <input id="email" name="email"></input>
+                    <input id="email" name="email" type="email"></input>
 
                     <label for="senha">senha</label>
                     <input id="senha" name="senha"></input>
@@ -124,7 +124,7 @@ function TesteAPI() {
             <br />
 
             <label for='escolha' />
-            <select name='escolha' id='escolha' defaultValue={'aluno'} onChange={setescolha}>
+            <select name='escolha' id='escolha' defaultValue={'aluno'} onChange={(e) => setescolha(e.target.value)}>
                 <option value="aluno">Betinha</option>x
                 <option value="func">Cozinheiro Sigma e Chad</option>
             </select>
