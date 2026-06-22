@@ -6,47 +6,96 @@ import Homescreen from './telas/Home.jsx';
 import Cadastroscreen from './telas/Cadastro.jsx';
 import TesteAPI from './telas/teste.jsx';
 import MenuScreen from './telas/MenuScreen.jsx';
-import { isDesktop } from 'react-device-detect';
 import logo from './assets/logo.png';
 
 function Heder() {
-  if (isDesktop === true) {
-    return (
-      <header style={styles.headerDesktop}>
-        <Link to='/' style={styles.logoLink}>
-          <img src={logo} style={styles.logoImagemDesktop} alt="Logo" />
+  return (
+    <>
+      <header className="app-header">
+        <Link to='/' className="logo-link">
+          <img src={logo} className="logo-imagem" alt="Logo" />
         </Link>
         
-        <div style={styles.botoesContainer}>
-          <Link to='/login' style={styles.botaoLink}>
-            <button style={styles.botaoPrincipal}>Entrar</button>
+        <div className="botoes-container">
+          <Link to='/login' className="botao-link">
+            <button className="botao-header">Entrar</button>
           </Link>
           
-          <Link to='/cadastro' style={styles.botaoLink}>
-            <button style={styles.botaoPrincipal}>Cadastrar</button>
+          <Link to='/cadastro' className="botao-link">
+            <button className="botao-header">Cadastrar</button>
           </Link>
         </div>
       </header>
-    );
-  } else {
-    return (
-      <header style={styles.headerMobile}>
-        <Link to='/' style={styles.logoLink}>
-          <img src={logo} style={styles.logoImagemMobile} alt="Logo" />
-        </Link>
-        
-        <div style={styles.botoesContainerMobile}>
-          <Link to="/login" style={styles.botaoLink}>
-            <button style={styles.botaoMobile}>Entrar</button>
-          </Link>
-          
-          <Link to='/cadastro' style={styles.botaoLink}>
-            <button style={styles.botaoMobile}>Cadastrar</button>
-          </Link> 
-        </div>
-      </header>
-    );
-  }
+
+      <style>{`
+        /* --- ESTILO PADRÃO (CELULAR/MOBILE) --- */
+        .logo-link {
+          display: flex;
+          align-items: center;
+        }
+        .botao-link {
+          display: flex;
+          align-items: center;
+          text-decoration: none;
+        }
+        .app-header {
+          background-color: #110E41; /* Corrigido de backgroundColor para background-color */
+          height: 4rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 100%;
+          box-sizing: border-box;
+          margin: 0;
+          margin-bottom: 15%;
+          padding: 0rem 4%; 
+        }
+        .logo-imagem {
+          height: 2rem;
+          object-fit: contain;
+        }
+        .botoes-container {
+          display: flex;
+          align-items: center;
+          gap: 0.8rem;
+        }
+        .botao-header {
+          background: linear-gradient(180deg, #681010, #3b0d0d);
+          color: white;
+          box-shadow: none;
+          outline: none;
+          border: none;
+          font-size: 100%;
+          border-radius: 7px;
+          padding: 0.5rem 1rem;
+          cursor: pointer;
+        }
+
+        /* --- ESTILO PARA COMPUTADOR (MEDIA QUERY) --- */
+        @media (min-width: 769px) {
+          .app-header {
+            background-color: #1a1a2e; /* Corrigido de backgroundColor para background-color */
+            height: 5rem;
+            margin-bottom: 0;
+            padding: 0rem 5%; 
+          }
+          .logo-imagem {
+            height: 4rem;
+          }
+          .botoes-container {
+            justify-content: center;
+            gap: 1rem;
+          }
+          .botao-header {
+            padding: 0 1.5rem;
+            height: 2.8rem;
+            font-size: 120%;
+            border-radius: 10px;
+          }
+        }
+      `}</style>
+    </>
+  );
 }
 
 function App() {
@@ -65,83 +114,3 @@ function App() {
 }
 
 export default App;
-
-const styles = {
-  logoLink: {
-    display: 'flex',
-    alignItems: 'center',
-  },
-  botaoLink: {
-    display: 'flex',
-    alignItems: 'center',
-    textDecoration: 'none'
-  },
-
-  // --- VERSÃO DESKTOP ---
-  headerDesktop: {
-    backgroundColor: '#1a1a2e',
-    height: '5rem',
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    width: '100%',
-    boxSizing: 'border-box',
-    padding: '0rem 5% 0rem 5%', 
-  },
-  logoImagemDesktop: {
-    height: '4rem',
-    objectFit: 'contain',
-  },
-  botoesContainer: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    gap: '1rem',
-  },
-  botaoPrincipal: {
-    background: 'linear-gradient(180deg, #681010, #3b0d0d)',
-    padding: '0 1.5rem',
-    height: '2.8rem',
-    color: 'white',
-    fontSize: '120%',
-    borderRadius: 10,
-    boxShadow: 'none',
-    outline: 'none',
-    border: 'none',
-    cursor: 'pointer',
-  },
-
-  // --- VERSÃO MOBILE ---
-  headerMobile: {
-    backgroundColor: '#110E41',
-    height: '4rem',
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    width: '100%',
-    boxSizing: 'border-box',
-    margin: 0,
-    marginBottom: '15%',
-    padding: '0rem 4% 0rem 4%', 
-  },
-  logoImagemMobile: {
-    height: '2rem',
-    objectFit: 'contain',
-  },
-  botoesContainerMobile: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '0.8rem',
-  },
-  botaoMobile: {
-    background: 'linear-gradient(180deg, #681010, #3b0d0d)',
-    color: 'white',
-    boxShadow: 'none',
-    outline: 'none',
-    border: 'none',
-    fontSize: '100%',
-    borderRadius: 7,
-    padding: '0.5rem 1rem',
-    cursor: 'pointer',
-  },
-};
