@@ -41,16 +41,16 @@ app.post('/cadastro', async (req, res) => {
         if(!userExiste){
             if(!emailExiste){
                 const userNovo = await User.create(dados);
-                res.send('fizei gng');
+                res.status(201).send('fizei gng');
             }else{
-                res.send('tu tem 2 email agora é, filho da puta?');
+                res.status(409).send('tu tem 2 email agora é, filho da puta?');
             }
         }else{
-            res.send('cai fora, doppelganger do caralho');
+            res.status(409).send('cai fora, doppelganger do caralho');
         }
 
     }catch(error){
-        res.send('i guess bruh' + error);
+        res.status(500).send('i guess bruh' + error);
     }
 })
 
@@ -65,12 +65,12 @@ app.post('/loginA', async (req, res) => {
         const procuraUser = await User.findByPk(dados.RM);
 
         if(!procuraUser){
-            res.send('Usuário n existe, otário')
+            res.status(404).send('Usuário n existe, otário')
         }else{
             if(procuraUser.senha==dados.senha){
-                res.status(200).send('tudo certo, pode entrar chefia');
+                res.status(201).send('tudo certo, pode entrar chefia');
             }else{
-                res.send("OMAE WA... TOJI-KUN WANAI!")
+                res.status(401).send("OMAE WA... TOJI-KUN WANAI!")
             }
         }
 
@@ -87,20 +87,20 @@ app.post('/loginF', async (req, res) => {
             senha: req.body.senha
         }
 
-        const procuraUser = await User.findByPk(dados.RM);
+        const procuraUser = await User.findOne({ where: { email: dados.email }});
 
         if(!procuraUser){
-            res.send("You don't think")
+            res.status(404).send("You don't think")
         }else{
             if((procuraUser.senha==dados.senha)&&(procuraUser.isCooking==true)){
-                res.send('bem vinda e obrigado por seus serviços');
+                res.status(201).send('bem vindo(a) e obrigado por seus serviços');
             }else{
-                res.send("Tu não é tia da cantina. Estarei mandando um esquadrão de bombardeio para sua localização nesse exato momento")
+                res.status(401).send("Tu não é tia da cantina. Estarei mandando um esquadrão de bombardeio para sua localização nesse exato momento")
             }
         }
 
     }catch(error){
-        res.send('i guess bruh' + error)
+        res.status(500).send('i guess bruh' + error)
     }
 })
 

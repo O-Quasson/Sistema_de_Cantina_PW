@@ -1,30 +1,121 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from '../assets/logo.png'
+import api from '../axios/api.js'
 import { Link } from "react-router-dom";
+import Cookies from 'js-cookie'
 
 function Loginscreen() {
+
+    const [escolha, setescolha] = useState('aluno');
+    const [login, setlogin] = useState();
+    const [senha, setsenha] = useState();
+
+    const loginA = async(e) => {
+        e.preventDefault();
+
+        let form = new FormData(e.target);
+
+        const dados = {
+            RM: Object.fromEntries(form.entries()).RM,
+            senha: Object.fromEntries(form.entries()).senha
+        }
+
+        api.post('/loginA', dados)
+            .then((data) => {
+                console.log(data.data);
+                alert(data.data);
+
+                console.log(data.data.status)
+                console.log("-------------")
+                if(data.status==201){
+                    Cookies.set('logado', JSON.stringify({logado: true, isCooking: false}), {expires: 1/720});
+                }
+            })
+
+        }
+
+    const loginF = async(e) => {
+        e.preventDefault();
+
+        let form = new FormData(e.target);
+
+        const dados = {
+            email: Object.fromEntries(form.entries()).email,
+            senha: Object.fromEntries(form.entries()).senha
+        }
+
+        api.post('/loginF', dados)
+            .then((data) => {
+                console.log(data.data);
+                alert(data.data);
+
+                if(data.status==201){
+                    Cookies.set('logado', JSON.stringify({logado: true, isCooking: true}), {expires: 1/720});
+                }
+            })
+
+    }
+
+    function Formulario(){
+        if(escolha=="aluno"){
+            return(
+                <form onSubmit={loginA} className="login-form">
+                    <div className="form-group-container">
+                        <div className="form-field">
+                            <label for="RM" className="form-label">RM:</label>
+                            <input id="RM" name="RM" type="number" className="form-input" onChange={setlogin}></input>
+                        </div>
+
+                        <div className="form-field">
+                            <label for="senha" className="form-label">Senha:</label>
+                            <input id="senha" name="senha" type="password" className="form-input" onChange={setsenha}></input>
+                        </div>
+                        
+                    </div>
+
+                    <input type='submit' value="Entrar" className="form-submit"/>
+                    
+                </form>
+            )
+        }else if(escolha=="func"){
+            return(
+
+                <form onSubmit={loginF} className="login-form">
+                    <div className="form-group-container">
+                        <div className="form-field">
+                            <label for="email" className="form-label">Email:</label>
+                            <input id="email" name="email" type="email" className="form-input" onChange={setlogin}></input>
+                        </div>
+
+                        <div className="form-field">
+                            <label for="senha" className="form-label">Senha:</label>
+                            <input id="senha" name="senha" type="password" className="form-input" onChange={setsenha}></input>
+                        </div>
+                        
+                    </div>
+
+                    <input type='submit' value="Entrar" className="form-submit"/>
+                    
+                </form>
+
+            )
+        }
+    }
+
     return(
         <>
             <div className="login-container">
                 <h1 className="login-title">Login</h1>
 
-                <form className="login-form">
-                    
-                    <div className="form-group-container">
-                        <div className="form-field">
-                            <label htmlFor='RM' className="form-label">RM:</label>
-                            <input type='number' id='RM' name='RM' className="form-input" />
-                        </div>
+                <div style={{marginBottom: 25}}>
+                    <select name='escolha' id='escolha' defaultValue={'aluno'} onChange={(e) => setescolha(e.target.value)} style={{textAlign: 'center', width: 200, fontSize: 20, height: 40}}>
+                        <option value="aluno">Aluno</option>
+                        <option value="func">Cozinheiro</option>
+                    </select>
+                </div>
 
-                        <div className="form-field">
-                            <label htmlFor='senha' className="form-label">Senha:</label>
-                            <input type='password' id='senha' name='senha' className="form-input" />
-                        </div>
-                    </div>
-                    
-                    <input type='submit' value="Entrar" className="form-submit"/>
-                
-                </form>
+                {Formulario()}
+
             </div>
 
             <style>{`
