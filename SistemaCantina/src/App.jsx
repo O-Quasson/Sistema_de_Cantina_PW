@@ -1,34 +1,12 @@
 import React from 'react';
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
-import Cookies from 'js-cookie'
-
+import logo from './assets/logo.png';
 import Loginscreen from './telas/Login.jsx';
 import Homescreen from './telas/Home.jsx';
 import Cadastroscreen from './telas/Cadastro.jsx';
 import TesteAPI from './telas/teste.jsx';
-import MenuScreen from './telas/MenuScreen.jsx';
-import logo from './assets/logo.png';
-
-function tetas() {
-  let tucu = Cookies.get('logado')
-
-    if(!tucu){
-              return(
-                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ4VIE2iyw4NMpr0jKXYfZXBJCP5rk7xO02Etus-sOvw&s"></img>
-              );
-          }
-
-          let turu = JSON.parse(tucu);
-          if(turu.isCooking==true){
-              return(
-                  <img src="https://images3.memedroid.com/images/UPLOADED212/5ecf56178abc5.jpeg"></img>
-              )
-          }else{
-              return(
-                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJbdIUkzWEWqc3-AWFlmWdsfKeWgxJLrZ0P_tNtBELsLYvFIPQw5HojYPh&s=10"></img>
-              )
-          }
-      }
+import TelaInicialCozinha from './telas/ParteCozinha/TelaInicialCozinha.jsx';
+import TelaInicialAluno from './telas/ParteAluno/TelaInicialAluno.jsx';
 
 function Heder() {
   return (
@@ -37,8 +15,6 @@ function Heder() {
         <Link to='/' className="logo-link">
           <img src={logo} className="logo-imagem" alt="Logo" />
         </Link>
-
-        {tetas()}
         
         <div className="botoes-container">
           <Link to='/login' className="botao-link">
@@ -131,7 +107,8 @@ function App() {
         <Route path='/login' element={<Loginscreen />} />
         <Route path='/cadastro' element={<Cadastroscreen />} />
         <Route path='/teste' element={<TesteAPI />} />
-        <Route path='/menuscreen' element={<MenuScreen />} />
+        <Route path='/telainicialcozinha' element={<TelaInicialCozinha />} />
+        <Route path='/telainicialaluno' element={<TelaInicialAluno />} />
       </Routes>
     </BrowserRouter>
   );
