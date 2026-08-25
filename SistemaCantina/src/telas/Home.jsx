@@ -18,7 +18,7 @@ function Homescreen() {
         <div className="home-text-section">
           <h1 className="home-title">Bem Vindo</h1>
           <p className="home-text">
-            Este site visa reduzir o desperdício de alimentos por parte dos alunos da Escola Etec Bento Quirino, afim de ter melhor utilização dos alimentos preparados
+            Este site visa reduzir o desperdício de alimentos por parte dos alunos da Escola Etec Bento Quirino, afim de ter melhor utilização dos alimentos preparados.
           </p>
         </div>
         <img src={imagens} className="home-image" alt="Imagens ilustrativas" />
@@ -33,10 +33,16 @@ function Homescreen() {
           box-sizing: border-box;
           display: flex;
           flex-direction: column;
+          transform: translateY(-60px);
+
+        }
+
+        .home-text-section {
+          width: 100%;
         }
 
         .home-title {
-          font-family: 'Dancing Script';
+          font-family: 'Dancing Script', cursive;
           color: #6B0707;
           text-shadow: -1px -1px 0 #000;
           font-size: 350%;
@@ -54,17 +60,45 @@ function Homescreen() {
           margin-top: 10%;
         }
 
-        /* --- ESTILO PARA COMPUTADOR (DESKTOP) --- */
+        /* --- MEDIA QUERIES --- */
+        
+        /* TABLET (600px a 768px) */
+        @media (min-width: 600px) and (max-width: 768px) {
+          .home-container {
+            padding-top: 0px;
+            transform: translateY(-70px);
+            max-width: 750px;
+            margin: 0 auto;
+          }
+
+          .home-title {
+            font-size: 400%;
+          }
+
+          .home-text {
+            font-size: 125%;
+          }
+
+          .home-image {
+            width: 80%;
+            margin-top: 5%;
+          }
+        }
+
+        /* COMPUTADOR / DESKTOP (a partir de 769px) */
         @media (min-width: 769px) {
           .home-container {
             flex-direction: row; /* Coloca o texto ao lado da imagem */
-            padding: 5vw; /* Equivalente ao seu windowWidth*0.05 */
-            gap: 5vw;
+            padding-top: 165px;
+            max-width: 1250px;
+            margin: 0 auto;
+            gap: 3vw;
           }
 
           .home-text-section {
-            margin-bottom: 6vw;
+            margin-bottom: 0;
             text-align: initial;
+            flex: 1;
           }
 
           .home-title {

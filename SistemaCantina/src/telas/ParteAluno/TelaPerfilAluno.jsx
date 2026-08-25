@@ -217,13 +217,15 @@ function TelaPerfilAluno() {
 
         /* BASE CELULAR */
         .content {
-          padding: 16px;
+          padding: 16px 22px 16px 22px;
           display: flex;
           flex-direction: column;
           gap: 16px;
           box-sizing: border-box;
           max-width: 480px;
           margin: 0 auto;
+          transform: translateY(-50px);
+
         }
 
         /* --- TÍTULOS --- */
@@ -456,14 +458,14 @@ function TelaPerfilAluno() {
         @media (min-width: 600px) and (max-width: 768px) {
           .content {
             padding-top: 0px;
-            transform: translateY(-60px);
+            transform: translateY(-75px);
             max-width: 700px;
           }
         }
 
         @media (min-width: 769px) {
           .content {
-            padding-top: 35px;
+            padding-top: 80px;
             max-width: 600px;
           }
         }

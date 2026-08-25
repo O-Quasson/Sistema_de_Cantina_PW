@@ -136,13 +136,15 @@ function TelaInicialAluno() {
 
         /* BASE CELULAR */
         .content {
-          padding: 16px;
+          padding: 0px 16px 16px 16px;
           display: flex;
           flex-direction: column;
           gap: 16px;
           box-sizing: border-box;
           max-width: 480px;
           margin: 0 auto;
+          transform: translateY(-30px);
+
         }
 
         .welcome-text {
@@ -210,7 +212,7 @@ function TelaInicialAluno() {
           font-size: 18px;
           font-weight: bold;
           color: #000000;
-          margin: 0 0 12px 0;
+          margin: 5px 0 12px 0;
         }
 
         .food-image-container {
@@ -218,6 +220,8 @@ function TelaInicialAluno() {
           border-radius: 12px;
           overflow: hidden;
           margin-bottom: 12px;
+          margin-top: 5px;
+
         }
 
         .food-image {
@@ -377,7 +381,7 @@ function TelaInicialAluno() {
         @media (min-width: 600px) and (max-width: 768px) {
           .content {
             padding-top: 0px;
-            transform: translateY(-60px);
+            transform: translateY(-70px);
             max-width: 700px;
           }
         }
@@ -385,7 +389,7 @@ function TelaInicialAluno() {
         @media (min-width: 769px) {
           .content {
             padding-top: 65px;
-            max-width: 850px;
+            max-width: 750px;
           }
         }
       `}</style>

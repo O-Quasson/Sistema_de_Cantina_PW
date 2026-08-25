@@ -30,7 +30,7 @@ Ferramentas de controle para otimizar a produção da cozinha:
 A divisão de tarefas para o desenvolvimento deste projeto foi organizada da seguinte forma:
 
 * 🎨 **Design de Interface**
-  └─ Luís
+  └─ Luis
 
 * 💻 **Desenvolvimento Frontend**
   └─ Luis
