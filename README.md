@@ -33,10 +33,10 @@ A divisão de tarefas para o desenvolvimento deste projeto foi organizada da seg
   └─ Luís
 
 * 💻 **Desenvolvimento Frontend**
-  └─ Gabriel Kendy
+  └─ Luis
 
 * ⚙️ **Desenvolvimento Backend**
-  └─ Gabriel Kendy & Luís
+  └─ Gabriel Kendy
 
 ---
 
