@@ -33,17 +33,17 @@ function TelaInicialCozinha() {
             >
               {/* Seletor de Datas da Semana */}
               <div className="calendar-selector">
-                {dates.map((date, index) => (
-                  <div key={date} className="date-item-wrapper">
+                <div className="dates-grid">
+                  {dates.map((date) => (
                     <span
+                      key={date}
                       className={`date-item ${selectedDate === date ? 'active' : ''}`}
                       onClick={() => setSelectedDate(date)}
                     >
                       {date}
                     </span>
-                    {index < dates.length - 1 && <span className="divider">|</span>}
-                  </div>
-                ))}
+                  ))}
+                </div>
                 <img src={calendario} className="calendar-icon-img" alt="Calendário" />
               </div>
 
@@ -138,11 +138,18 @@ function TelaInicialCozinha() {
         }
 
         .content {
-          padding: 16px;
+          padding-top: 0px;      /* Aumentado: empurra o card para baixo no celular */
+          padding-right: 20px;    /* Espaço na direita no celular */
+          padding-bottom: 32px;   /* Espaço na parte inferior */
+          padding-left: 20px;     /* Espaço na esquerda no celular */
           display: flex;
           flex-direction: column;
-          gap: 12px;
+          gap: 16px;              /* Espaçamento interno mais bem distribuído */
           box-sizing: border-box;
+          width: 100%;
+          max-width: 520px;       /* Um pouco mais largo para acomodar melhor os elementos */
+          margin: 0 auto;
+          transform: translateY(-25px);
         }
 
         .menu-card {
@@ -158,14 +165,12 @@ function TelaInicialCozinha() {
 
         /* Cardápios */
         .cardapio-card {
-          background: #e6e6e6;          
-          border: 1px solid #c1c1c1;
+          background: #f3f3f3;          
         }
 
         /* Gráfico */
         .grafico-card {
-          background: #e6e6e6;
-          border: 1px solid #c1c1c1;
+          background: #f3f3f3;
         }
 
         .menu-card-header {
@@ -199,7 +204,7 @@ function TelaInicialCozinha() {
 
         .expand-text {
           font-size: 14px;
-          color: #333333; /* Ajustado para uma cor escura legível sobre o fundo cinza claro #e6e6e6 */
+          color: #333333;
           line-height: 1.6;
           margin: 0;
         }
@@ -215,16 +220,25 @@ function TelaInicialCozinha() {
           margin-bottom: 16px;
         }
 
-        .date-item-wrapper {
+        .dates-grid {
           display: flex;
           align-items: center;
+          width: 100%;
         }
 
         .date-item {
+          flex: 1;
           font-size: 13px;
           font-weight: bold;
           color: #3b0d0d;
           cursor: pointer;
+          text-align: center;
+          border-right: 1px solid #6d1f1f;
+          padding: 0 4px;
+        }
+
+        .date-item:last-child {
+          border-right: none;
         }
 
         .date-item.active {
@@ -232,16 +246,11 @@ function TelaInicialCozinha() {
           text-decoration: underline;
         }
 
-        .divider {
-          color: #6d1f1f;
-          margin-left: 6px;
-          font-size: 12px;
-        }
-
         .calendar-icon-img {
-          width: 24px;
-          height: 24px;
+          width: 22px;
+          height: 22px;
           object-fit: contain;
+          margin-left: 10px;
         }
 
         .day-details {
@@ -344,8 +353,19 @@ function TelaInicialCozinha() {
         }
 
         /* --- ESTILO PARA COMPUTADOR (MEDIA QUERY) --- */
+       @media (min-width: 600px) and (max-width: 768px) {
+          .content {
+            padding-top: 0px; /* Zera o espaço do topo apenas no iPad Mini */
+            transform: translateY(-60px); /* Ajuste fino do iPad Mini */
+            max-width: 700px;
+          }
+        }
+
         @media (min-width: 769px) {
-          
+          .content {
+            padding-top: 65px; /* Mantém exatamente como você gostou para o PC */
+            max-width: 850px;
+          }
         }
       `}</style>
     </>

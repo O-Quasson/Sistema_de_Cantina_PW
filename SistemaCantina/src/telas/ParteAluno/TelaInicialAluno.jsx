@@ -1,11 +1,14 @@
 import { useState } from 'react'
 import livroslogo from '../../assets/livroslogo.png'
 import pratoExemplo from '../../assets/prato.png'
+import calendario from '../../assets/calendario.png'
 
-function TelaAlunoCardapio() {
+function TelaInicialAluno() {
   const [ireiComer, setIreiComer] = useState(false)
   const [quantidadeSelecionada, setQuantidadeSelecionada] = useState('')
+  const [selectedDate, setSelectedDate] = useState('25/05')
 
+  const dates = ['25/05', '26/05', '27/05', '28/05', '29/05', '30/05']
   const opcoesQuantidade = ['200g', '400g', '600g', '800g']
 
   const handleEnviar = () => {
@@ -18,9 +21,25 @@ function TelaAlunoCardapio() {
         <div className="content">
           <h2 className="welcome-text">Olá, Jair Messias Bolsonaro</h2>
 
+          {/* --- SELETOR DE DIAS DO CARDÁPIO --- */}
+          <div className="calendar-selector">
+            <div className="dates-grid">
+              {dates.map((date) => (
+                <span
+                  key={date}
+                  className={`date-item ${selectedDate === date ? 'active' : ''}`}
+                  onClick={() => setSelectedDate(date)}
+                >
+                  {date}
+                </span>
+              ))}
+            </div>
+            <img src={calendario} className="calendar-icon-img" alt="Calendário" />
+          </div>
+
           {/* Card do Cardápio do dia */}
           <div className="card-aluno">
-            <h3 className="card-title">Cardápio (25/05/2026)</h3>
+            <h3 className="card-title">Cardápio ({selectedDate}/2026)</h3>
             
             <div className="food-image-container">
               <img src={pratoExemplo} alt="Prato do dia" className="food-image" />
@@ -115,7 +134,7 @@ function TelaAlunoCardapio() {
           box-sizing: border-box;
         }
 
-        /* --- CONTEÚDO PRINCIPAL --- */
+        /* BASE CELULAR */
         .content {
           padding: 16px;
           display: flex;
@@ -131,6 +150,51 @@ function TelaAlunoCardapio() {
           font-weight: bold;
           color: #000000;
           margin: 8px 0 4px 0;
+        }
+
+        /* --- ESTILOS DO SELETOR DE DIA (ALINHAMENTO PERFEITO COM BORDA) --- */
+        .calendar-selector {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          background-color: #f3f3f3;
+          padding: 10px 12px;
+          border-radius: 12px;
+        }
+
+        .dates-grid {
+          display: flex;
+          align-items: center;
+          width: 100%;
+        }
+
+        .date-item {
+          flex: 1;
+          font-size: 13px;
+          font-weight: bold;
+          color: #3b0d0d;
+          cursor: pointer;
+          text-align: center;
+          /* Cria a barra vertical exata entre os itens */
+          border-right: 1px solid #6d1f1f;
+          padding: 0 4px;
+        }
+
+        /* Remove a barra vertical do último item (30/05) */
+        .date-item:last-child {
+          border-right: none;
+        }
+
+        .date-item.active {
+          color: #6d1f1f;
+          text-decoration: underline;
+        }
+
+        .calendar-icon-img {
+          width: 22px;
+          height: 22px;
+          object-fit: contain;
+          margin-left: 10px;
         }
 
         /* --- CARDS DA PÁGINA --- */
@@ -308,9 +372,25 @@ function TelaAlunoCardapio() {
           color: #888;
           letter-spacing: 1px;
         }
+
+        /* MEDIA QUERIES (Estrutura responsiva adaptada) */
+        @media (min-width: 600px) and (max-width: 768px) {
+          .content {
+            padding-top: 0px;
+            transform: translateY(-60px);
+            max-width: 700px;
+          }
+        }
+
+        @media (min-width: 769px) {
+          .content {
+            padding-top: 65px;
+            max-width: 850px;
+          }
+        }
       `}</style>
     </>
   )
 }
 
-export default TelaAlunoCardapio
+export default TelaInicialAluno

@@ -7,6 +7,7 @@ import Cadastroscreen from './telas/Cadastro.jsx';
 import TesteAPI from './telas/teste.jsx';
 import TelaInicialCozinha from './telas/ParteCozinha/TelaInicialCozinha.jsx';
 import TelaInicialAluno from './telas/ParteAluno/TelaInicialAluno.jsx';
+import TelaPerfilAluno from './telas/ParteAluno/TelaPerfilAluno.jsx';
 
 function Heder() {
   return (
@@ -109,6 +110,7 @@ function App() {
         <Route path='/teste' element={<TesteAPI />} />
         <Route path='/telainicialcozinha' element={<TelaInicialCozinha />} />
         <Route path='/telainicialaluno' element={<TelaInicialAluno />} />
+        <Route path='/telaperfilaluno' element={<TelaPerfilAluno />} />
       </Routes>
     </BrowserRouter>
   );
