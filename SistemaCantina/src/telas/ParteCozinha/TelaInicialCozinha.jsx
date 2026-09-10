@@ -13,6 +13,18 @@ function TelaInicialCozinha() {
 
   const dates = ['25/05', '26/05', '27/05', '28/05', '29/05', '30/05']
 
+  // Dados fictícios para o gráfico
+  const chartData = [
+    { label: 'Não vão comer', value: 15 },
+    { label: '200g', value: 45 },
+    { label: '400g', value: 80 },
+    { label: '600g', value: 35 },
+    { label: '800g', value: 10 }
+  ]
+  
+  // Pega o maior valor para calcular a altura das barras dinamicamente
+  const maxChartValue = Math.max(...chartData.map(d => d.value))
+
   return (
     <>
       <div className="container">
@@ -73,12 +85,44 @@ function TelaInicialCozinha() {
               <h2 className="menu-title">Gráfico</h2>
             </div>
 
-            <div className={`expand-content ${graficoOpen ? 'open' : ''}`}>
+            <div 
+              className={`expand-content ${graficoOpen ? 'open' : ''}`}
+              onClick={(e) => e.stopPropagation()}
+            >
               <p className="expand-text">
-                Acompanhe os gráficos de desperdício alimentar e consumo ao longo
-                do tempo, ajudando a escola a reduzir o impacto ambiental e
-                melhorar o aproveitamento dos alimentos preparados.
+                Veja abaixo a quantidade de comida que dever ser feita hoje para satisfazer
+                a necessidade nutritiva dos alunos e evitar o desperdício de comidas.
               </p>
+
+              {/* Gráfico em Colunas */}
+              <div className="grafico-container">
+                <div className="y-axis-label">Qtd. Pessoas</div>
+                <div className="chart-area">
+                  {chartData.map((data, index) => (
+                    <div className="chart-bar-group" key={index}>
+                      <span className="bar-value">{data.value}</span>
+                      <div 
+                        className="bar-fill" 
+                        style={{ height: `${(data.value / maxChartValue) * 100}%` }}
+                      ></div>
+                      <span className="bar-label">{data.label}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Área do Cálculo de Comida */}
+              <div className="calculo-container">
+                <p className="calculo-titulo"><strong>Cálculo total de comida a preparar:</strong></p>
+                <div className="calculo-expressao">
+                  (15 × 0g) + (45 × 200g) + (80 × 400g) + (35 × 600g) + (10 × 800g)
+                </div>
+                <div className="calculo-totais">
+                  <p><strong>Total em gramas:</strong> 70.000 g</p>
+                  <p><strong>Total em quilos:</strong> 70 kg</p>
+                </div>
+              </div>
+
             </div>
           </div>
 
@@ -198,7 +242,7 @@ function TelaInicialCozinha() {
 
         .expand-content.open {
           padding: 10px 20px 14px;
-          max-height: 600px;
+          max-height: 800px;
           opacity: 1;
         }
 
@@ -268,7 +312,7 @@ function TelaInicialCozinha() {
         .image-placeholder {
           width: 100%;
           height: 160px;
-          background-color: #6e6e6e;
+          background-color: #b0adad;
           border-radius: 12px;
           display: flex;
           flex-direction: column;
@@ -297,7 +341,7 @@ function TelaInicialCozinha() {
         }
 
         .btn-editar-interno {
-          background-color: #1a1a2e;
+          background-color: #101041;
           color: #ffffff;
           border: none;
           padding: 8px 24px;
@@ -312,6 +356,104 @@ function TelaInicialCozinha() {
         .btn-editar-interno:hover {
           background-color: #f5f5f5;
         }
+
+        /* --- ESTILOS DO GRÁFICO E CÁLCULO --- */
+        .grafico-container {
+          margin-top: 25px;
+          margin-bottom: 45px;
+          margin-left: 35px; /* Aumentado para dar espaço ao rótulo Y */
+          position: relative;
+        }
+
+        .y-axis-label {
+          position: absolute;
+          left: -45px; /* Afastado da linha vertical do gráfico */
+          top: 50%;
+          transform: translateY(-50%) rotate(-90deg);
+          font-size: 11px;
+          color: #333;
+          font-weight: bold;
+          white-space: nowrap;
+        }
+
+        .chart-area {
+          display: flex;
+          align-items: flex-end;
+          justify-content: space-around;
+          height: 180px;
+          border-left: 2px solid #333;
+          border-bottom: 2px solid #333;
+          padding: 0 5px;
+          gap: 8px;
+        }
+
+        .chart-bar-group {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: flex-end;
+          height: 100%;
+          flex: 1;
+          position: relative;
+        }
+
+        .bar-value {
+          font-size: 12px;
+          font-weight: bold;
+          color: #7f0b0b;
+          margin-bottom: 4px;
+        }
+
+        .bar-fill {
+          width: 100%;
+          max-width: 35px;
+          background-color: #7f0b0b;
+          border-radius: 4px 4px 0 0;
+          transition: height 0.5s ease;
+        }
+
+        .bar-label {
+          position: absolute;
+          bottom: -32px;
+          font-size: 11px;
+          font-weight: bold;
+          color: #333;
+          text-align: center;
+          width: 120%;
+          line-height: 1.1;
+        }
+
+        .calculo-container {
+          margin-top: 20px;
+          padding: 12px 14px;
+          background-color: #ffffff;
+          border-radius: 8px;
+          border: 1px solid #e0e0e0;
+          font-size: 13px;
+          color: #333;
+        }
+
+        .calculo-titulo {
+          margin: 0 0 6px 0;
+          color: #7f0b0b;
+        }
+
+        .calculo-expressao {
+          margin: 0 0 10px 0;
+          font-family: monospace;
+          font-size: 12px;
+          background-color: #f8f8f8;
+          padding: 6px 8px;
+          border-radius: 4px;
+          border: 1px dashed #ccc;
+          word-break: break-all;
+        }
+
+        .calculo-totais p {
+          margin: 4px 0;
+          font-size: 13px;
+        }
+        /* -------------------------------------- */
 
         .kitchen-img {
           width: 100%;
@@ -355,15 +497,15 @@ function TelaInicialCozinha() {
         /* --- ESTILO PARA COMPUTADOR (MEDIA QUERY) --- */
        @media (min-width: 600px) and (max-width: 768px) {
           .content {
-            padding-top: 0px; /* Zera o espaço do topo apenas no iPad Mini */
-            transform: translateY(-60px); /* Ajuste fino do iPad Mini */
+            padding-top: 0px; 
+            transform: translateY(-60px); 
             max-width: 700px;
           }
         }
 
         @media (min-width: 769px) {
           .content {
-            padding-top: 65px; /* Mantém exatamente como você gostou para o PC */
+            padding-top: 65px; 
             max-width: 850px;
           }
         }
