@@ -25,11 +25,14 @@ function Loginscreen() {
                 console.log(data.data);
                 alert(data.data);
 
-                console.log(data.data.status)
-                console.log("-------------")
+
                 if(data.status==201){
                     Cookies.set('logado', JSON.stringify({logado: true, isCooking: false}), {expires: 1/720});
                 }
+            })
+            .catch((e) => {
+                alert(e.response?.data);
+                console.log(e.response?.status);
             })
 
         }
@@ -52,6 +55,10 @@ function Loginscreen() {
                 if(data.status==201){
                     Cookies.set('logado', JSON.stringify({logado: true, isCooking: true}), {expires: 1/720});
                 }
+            })
+            .catch((e) => {
+                alert(e.response?.data);
+                console.log(e.response?.status);
             })
 
     }
