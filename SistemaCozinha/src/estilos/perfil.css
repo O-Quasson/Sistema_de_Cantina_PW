@@ -1,0 +1,38 @@
+.perfil-page { min-height: calc(100vh - 5rem); background:#fff; }
+.status-box-perfil { width:100%; padding:18px; border-radius:12px; background:#f4f4f5; color:#666a71; text-align:center; }
+.perfil-content { width:min(590px,calc(100% - 28px)); margin:0 auto; padding:28px 0 50px; display:flex; flex-direction:column; gap:16px; }
+.title-script { margin:0; text-align:center; color:#630c0c; font-family:'Dancing Script',cursive; font-size:clamp(3rem,8vw,4.2rem); line-height:1; }
+.card-profile, .predefinir-card-wrapper { background:#f4f4f5; border-radius:15px; }
+.card-profile { padding:22px; display:flex; flex-direction:column; gap:13px; }
+.avatar-circle { width:88px; height:88px; margin:0 auto 6px; display:grid; place-items:center; border-radius:50%; background:#e0e0e2; color:#6b0707; }
+.avatar-circle svg { width:40px; height:40px; fill:none; stroke:currentColor; stroke-width:1.55; stroke-linecap:round; stroke-linejoin:round; }
+.profile-badge { margin:0 auto; padding:5px 10px; border-radius:999px; background:#fff; color:#6b0707; font-size:.72rem; font-weight:700; }
+.form-group { display:flex; flex-direction:column; gap:6px; }
+.field-label { color:#2d3037; font-size:.9rem; font-weight:700; }
+.input-field { width:100%; min-height:45px; padding:11px 12px; box-sizing:border-box; border:1px solid #d7d7da; border-radius:9px; background:#fff; color:#22242a; font-size:.96rem; outline:none; }
+.input-field:focus { border-color:#a11b1b; box-shadow:0 0 0 3px rgba(161,27,27,.12); }
+.input-field[readonly] { background:#ececef; color:#686b72; cursor:not-allowed; }
+.perfil-page .campo-senha { position:relative; }
+.perfil-page .campo-senha .form-input { width:100%; min-height:45px; padding-right:52px; padding-left:12px; box-sizing:border-box; border:1px solid #d7d7da; border-radius:9px; background:#fff; color:#22242a; font-size:.96rem; outline:none; }
+.perfil-page .campo-senha .form-input:focus { border-color:#a11b1b; box-shadow:0 0 0 3px rgba(161,27,27,.12); }
+.perfil-page .botao-visualizar-senha { position:absolute; top:50%; right:7px; width:38px; height:38px; transform:translateY(-50%); display:grid; place-items:center; border:0; border-radius:8px; background:transparent; color:#555861; cursor:pointer; }
+.perfil-page .botao-visualizar-senha:hover:not(:disabled) { background:#f0f0f2; color:#6b0707; }
+.perfil-page .botao-visualizar-senha svg { width:20px; height:20px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+.perfil-senha-help { margin:-1px 0 0; color:#777a81; font-size:.76rem; }
+.btn-editar, .btn-enviar-predefinicao { min-height:46px; border:0; border-radius:10px; color:#fff; font-weight:700; cursor:pointer; }
+.btn-editar { margin-top:4px; background:#6d0707; }
+.btn-enviar-predefinicao { background:#101041; }
+.btn-editar:disabled, .btn-enviar-predefinicao:disabled { opacity:.6; cursor:wait; }
+.mensagem-perfil { margin:0; color:#6d0707; font-size:.83rem; line-height:1.45; text-align:center; font-weight:700; }
+.mensagem-perfil.sucesso { color:#255f2d; }
+.predefinir-card-wrapper { overflow:hidden; }
+.card-header-banner { width:100%; min-height:63px; padding:0 20px; display:flex; justify-content:space-between; align-items:center; border:0; background:transparent; cursor:pointer; }
+.inner-title { font-size:clamp(2rem,5vw,2.35rem); }
+.card-header-action { color:#6b0707; font-size:1.4rem; font-weight:700; }
+.dias-container { padding:0 20px 20px; display:flex; flex-direction:column; gap:12px; }
+.predefinicao-help { margin:0 0 3px; color:#6a6d74; font-size:.8rem; line-height:1.45; }
+.day-row { min-height:44px; padding:0 11px; display:flex; align-items:center; justify-content:space-between; border-radius:8px; background:#fff; }
+.day-label { color:#2d3037; font-size:.9rem; font-weight:700; }
+.day-check { width:19px; height:19px; accent-color:#6d0707; }
+
+@media (max-width:560px) { .perfil-content { width:min(100% - 20px,520px); } .card-profile { padding:19px; } }

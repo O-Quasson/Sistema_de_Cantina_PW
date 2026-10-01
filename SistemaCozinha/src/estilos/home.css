@@ -1,0 +1,22 @@
+.home-container {
+  width: min(1250px, calc(100% - 36px));
+  min-height: calc(100vh - 5rem);
+  margin: 0 auto;
+  padding: 68px 0 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5vw;
+}
+.home-text-section { flex: 1; min-width: 0; }
+.home-title { margin: 0 0 10px; color: #6b0707; font-family: 'Dancing Script', cursive; font-size: clamp(3.5rem, 7vw, 5.7rem); line-height: .95; text-shadow: -1px -1px 0 rgba(0,0,0,.17); }
+.home-text { max-width: 640px; margin: 0; color: #33363c; font-size: clamp(1rem, 1.65vw, 1.22rem); line-height: 1.65; text-align: justify; }
+.home-image { width: min(40%, 480px); height: auto; display: block; object-fit: contain; }
+
+@media (max-width: 768px) {
+  .home-container { min-height: calc(100vh - 4rem); padding: 40px 0 48px; flex-direction: column; gap: 30px; }
+  .home-text-section { width: 100%; }
+  .home-title { font-size: clamp(3.3rem, 16vw, 4.5rem); }
+  .home-text { font-size: 1rem; }
+  .home-image { width: min(82%, 470px); }
+}
